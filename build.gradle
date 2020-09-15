@@ -3,6 +3,7 @@ buildscript {
 		springBootVersion = '2.3.3.RELEASE'
 		springFoxVersion = '2.9.2'
 		mysqlConnectorVersion = '8.0.20'
+		lombokVersion = '1.18.12'
 	}
 	repositories {
 		mavenCentral()
@@ -32,12 +33,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-json'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	//MySQL
 	compile("mysql:mysql-connector-java:${mysqlConnectorVersion}")
 
 	//Lombok
-	compileOnly(group: 'org.projectlombok', name: 'lombok', version: '1.18.12')
+	compileOnly("org.projectlombok:lombok:${lombokVersion}")
+	annotationProcessor(group: 'org.projectlombok', name: 'lombok', version: lombokVersion)
 
 	//Swagger
 	implementation(group: 'io.springfox', name: 'springfox-swagger-ui', version: springFoxVersion)
